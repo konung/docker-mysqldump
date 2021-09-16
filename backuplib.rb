@@ -55,7 +55,7 @@ class BackupLib
 
     # Get a list of DBs to backup
     logger.info 'List available DBs'
-    dbs_from_query = my.query('SHOW DATABASES')
+    dbs_from_query = my.query('SHOW DATABASES').map { |row| row['Database'] }
 
     # Check to see if LIST_DBS_TO_BACKUP_LEAVE_BLANK_FOR_ALL is set
     logger.info "Check if COMMA_SEP_LIST_DBS_TO_BACKUP_LEAVE_BLANK_FOR_ALL (#{COMMA_SEP_LIST_DBS_TO_BACKUP_LEAVE_BLANK_FOR_ALL}) is set to  anything? "
@@ -66,12 +66,7 @@ class BackupLib
     logger.info "Will backup #{dbs_to_backup}"
 
     # get a name run a sql dump
-    dbs_to_backup.each do |row|
-      db = row['Database'].to_s
-
-      # Skipping larger backups during dev phase
-      # next unless db == 'support_development'
-
+    dbs_to_backup.each do |db|
       start_time = Time.now
       logger.info ''
       logger.info '##########################################'

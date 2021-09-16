@@ -1,4 +1,10 @@
-# synology-mysqldump
+# docker-mysqldump
+
+Docker Hub - [konung/mysqldump](https://hub.docker.com/r/konung/mysqldump)
+
+```shell
+docker pull konung/mysqldump
+```
 
 Docker container + mysql dump + ruby script
 You can backup ALL dbs from your MySQL/MariaDB server, or just several.
