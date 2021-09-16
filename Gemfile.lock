@@ -1,0 +1,21 @@
+GEM
+  remote: https://rubygems.org/
+  specs:
+    chronic (0.10.2)
+    fileutils (1.5.0)
+    logger (1.4.3)
+    mysql2 (0.5.3)
+    whenever (1.0.0)
+      chronic (>= 0.6.3)
+
+PLATFORMS
+  x86_64-darwin-19
+
+DEPENDENCIES
+  fileutils
+  logger
+  mysql2 (= 0.5.3)
+  whenever
+
+BUNDLED WITH
+   2.2.21
