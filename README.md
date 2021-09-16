@@ -20,7 +20,7 @@ You can backup ALL dbs from your MySQL/MariaDB server, or just several.
 - If you want to back up all databases on your server/cluster leave `COMMA_SEP_LIST_DBS_TO_BACKUP_LEAVE_BLANK_FOR_ALL=` blank, otherwise specify comma separated list like so
 
 ```
-COMMA_SEP_LIST_DBS_TO_BACKUP_LEAVE_BLANK_FOR_ALL=great_db_production, another_great_db_development, third_db_to_backup
+COMMA_SEP_LIST_DBS_TO_BACKUP_LEAVE_BLANK_FOR_ALL=great_db_production, another_great_db_development
 ```
 
 ## Example commands
