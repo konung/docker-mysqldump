@@ -2,6 +2,8 @@
 
 Docker Hub - [konung/mysqldump](https://hub.docker.com/r/konung/mysqldump)
 
+Github - [konung/docker-mysqldump](https://github.com/konung/docker-mysqldump) (See GitHub for license and disclaimer)
+
 ```shell
 docker pull konung/mysqldump
 ```
@@ -21,8 +23,17 @@ You can backup ALL dbs from your MySQL/MariaDB server, or just several.
 ## Setup
 
 - This was developed to be run within Synology NAS, but no reason it should be able to run in any other Docker host environment.
-- If you want to run on your MacBook/Windows/Linux desktop, I recommend using .env file to override any Dockerfile ENV variables. Synology / QNAP NAS should give you ability to do in GUI.
-- [Refer to Dockerfile](./Dockerfile), for available variables
+- If you want to run on your MacBook/Windows/Linux desktop, I recommend using .env file to override any Dockerfile ENV variables, using .evn file. Synology / QNAP NAS should give you ability to do in GUI.
+- [Refer to Dockerfile](https://github.com/konung/docker-mysqldump/blob/main/Dockerfile), for available variables. But important ENV variables to override are:
+
+  ```shell
+  SQL_SERVER_TO_BACKUP_NAME=sql-replica-1
+  SQL_SERVER_TO_BACKUP_FQDN=sql-replica-1.example.com
+  SQL_BACKUP_USER=CHANGE_ME_MYSQL_DUMP_USER
+  SQL_BACKUP_PASS=CHANGE_ME_MYSQL_DUMP_PASS
+  FINAL_COPY_TO_DIR=/path_to_folder_on_host_where_to_save_backedup_files
+  ```
+
 - If you want to back up all databases on your server/cluster leave `COMMA_SEP_LIST_DBS_TO_BACKUP_LEAVE_BLANK_FOR_ALL=` blank, otherwise specify comma separated list like so
 
 ```
