@@ -1,13 +1,12 @@
-FROM ruby:3.0
+FROM ruby:3.2
 
 ENV APP_PATH=/app
 WORKDIR $APP_PATH
 COPY . .
 VOLUME [ "/path_to_backups_dir_on_host"]
 
-
-RUN apt-get update -y
-RUN apt-get install -y tzdata rsync build-essential mariadb-client \
+RUN apt update -y
+RUN apt install -y tzdata rsync build-essential mariadb-client \
     libmariadb-dev-compat libmariadb-dev p7zip-full cron nano iputils-ping iproute2
 
 ENV TZ="America/Chicago"
@@ -20,7 +19,6 @@ ENV TMP_BACKUP_TO_DIR=/tmp/sqldata/
 ENV FINAL_COPY_TO_DIR=/path_to_backups_dir_on_host/
 ENV CRON_LOG_PATH=/var/log/cron.log
 ENV BACKUP_FREQUENCY_MINS=60
-
 
 RUN touch "$CRON_LOG_PATH"
 RUN chmod +x -R /app
