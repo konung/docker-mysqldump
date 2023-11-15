@@ -48,7 +48,7 @@ class BackupLib
                            backup_path_dir: TMP_BACKUP_TO_PATH)
     #### App itself
     logger.info "Setup MySQL connection to server : #{host}"
-    my = Mysql2::Client.new(host: host, username: user, password: pass)
+    my = Mysql2::Client.new(host:, username: user, password: pass)
     # You can do any SSL stuff before the real_connect
     # args: hostname, username, password, database
     # my.real_connect(host,user,pass)
