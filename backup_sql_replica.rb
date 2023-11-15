@@ -3,7 +3,7 @@
 #   Email:        nick.gorbikoff@gmail.com
 #   Description:  Backup sql-replica-1 server
 
-require_relative 'backuplib'
+require_relative "backuplib"
 backup_lib = BackupLib.new
 backup_lib.create_all_storage_locations!
 backup_lib.backup_all_databases
