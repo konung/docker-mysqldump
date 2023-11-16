@@ -7,6 +7,7 @@ require "rubygems"
 require "logger"
 require "mysql2"
 require "fileutils"
+require "parallel"
 
 class BackupLib
   SQL_SERVER_TO_BACKUP_NAME = ENV["SQL_SERVER_TO_BACKUP_NAME"]
@@ -22,7 +23,7 @@ class BackupLib
   FINAL_BACKUP_STORAGE_PATH = File.join(ENV["FINAL_COPY_TO_DIR"], SQL_SERVER_TO_BACKUP_NAME, DAY_OF_WEEK, "/")
 
   def logger
-    @logger ||= Logger.new($stdout, :debug)
+    @logger ||= Logger.new($stdout, :info)
   end
 
   def create_all_storage_locations!
@@ -66,7 +67,7 @@ class BackupLib
     logger.info "Will backup #{dbs_to_backup}"
 
     # get a name run a sql dump
-    dbs_to_backup.each do |db|
+    Parallel.each(dbs_to_backup, progress: "Running mysqldump and 7zip") do |db|
       start_time = Time.now
       logger.info ""
       logger.info "##########################################"

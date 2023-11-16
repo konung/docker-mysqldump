@@ -57,6 +57,7 @@ DEPENDENCIES
   fileutils
   logger
   mysql2
+  parallel (~> 1.23)
   standard (~> 1.32)
   whenever
 

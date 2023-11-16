@@ -7,3 +7,5 @@ gem "mysql2"
 gem "whenever"
 
 gem "standard", "~> 1.32"
+
+gem "parallel", "~> 1.23"
