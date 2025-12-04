@@ -6,8 +6,8 @@ IMAGE   := konung/mariadb-dump
 help: ## Show this help
 	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-15s\033[0m %s\n", $$1, $$2}'
 
-build: ## Build and push multi-arch image to registry
-	docker buildx build --push --platform linux/arm64/v8,linux/amd64 -t $(IMAGE):$(VERSION) -t $(IMAGE):latest .
+build: ## Build and push image to registry (x86-64 only)
+	docker buildx build --push --platform linux/amd64 -t $(IMAGE):$(VERSION) -t $(IMAGE):latest .
 
 build-local: ## Build image for local testing
 	docker build -t $(IMAGE):local .
