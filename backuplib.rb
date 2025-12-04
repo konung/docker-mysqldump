@@ -2,7 +2,7 @@
 #   Date:         September 8, 2021
 #   Email:        nick.gorbikoff@gmail.com
 #   Description:  This lib is used for usefull little snippelts used for backup.
-#   Requires:     mysql gem and mysqldump installed system wide.
+#   Requires:     mysql2 gem and mariadb-dump installed system wide.
 require "rubygems"
 require "logger"
 require "mysql2"
@@ -48,7 +48,7 @@ class BackupLib
     pass: SQL_BACKUP_PASS,
     backup_path_dir: TMP_BACKUP_TO_PATH)
     #### App itself
-    logger.info "Setup MySQL connection to server : #{host}"
+    logger.info "Setup MariaDB connection to server : #{host}"
     my = Mysql2::Client.new(host:, username: user, password: pass)
     # You can do any SSL stuff before the real_connect
     # args: hostname, username, password, database
@@ -67,7 +67,7 @@ class BackupLib
     logger.info "Will backup #{dbs_to_backup}"
 
     # get a name run a sql dump
-    Parallel.each(dbs_to_backup, progress: "Running mysqldump and 7zip") do |db|
+    Parallel.each(dbs_to_backup, progress: "Running mariadb-dump and 7zip") do |db|
       start_time = Time.now
       logger.info ""
       logger.info "##########################################"
@@ -75,7 +75,7 @@ class BackupLib
       backup_file_name = "#{backup_path_dir}#{db}"
       backup_file_path = "#{backup_file_name}.sql"
       backup_archive_path = "#{backup_file_name}.7z"
-      cmd_mysql = "mysqldump -h#{host} -u#{user} -p#{pass} #{db} > #{backup_file_path}"
+      cmd_mysql = "mariadb-dump -h#{host} -u#{user} -p#{pass} #{db} > #{backup_file_path}"
       logger.debug cmd_mysql
       system(cmd_mysql)
 

@@ -1,13 +1,15 @@
-FROM ruby:3.2
+FROM ruby:3.4.7-slim-trixie
 
 ENV APP_PATH=/app
 WORKDIR $APP_PATH
 COPY . .
 VOLUME [ "/path_to_backups_dir_on_host"]
 
-RUN apt update -y
-RUN apt install -y tzdata rsync build-essential mariadb-client \
-    libmariadb-dev-compat libmariadb-dev p7zip-full cron nano iputils-ping iproute2
+# Install dependencies (Debian Trixie has MariaDB 11.8.x LTS)
+RUN apt update -y && apt install -y \
+    tzdata rsync build-essential \
+    mariadb-client libmariadb-dev-compat libmariadb-dev \
+    p7zip-full cron nano iputils-ping iproute2
 
 ENV TZ="America/Chicago"
 ENV SQL_SERVER_TO_BACKUP_NAME=sql-replica-1
