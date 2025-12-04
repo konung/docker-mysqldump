@@ -1,72 +1,52 @@
 GEM
   remote: https://rubygems.org/
   specs:
-    ast (2.4.3)
     bigdecimal (3.3.1)
     chronic (0.10.2)
+    equatable (0.7.0)
     fileutils (1.8.0)
-    json (2.17.1)
-    language_server-protocol (3.17.0.5)
-    lint_roller (1.1.0)
     logger (1.7.0)
     mysql2 (0.5.7)
       bigdecimal
+    necromancer (0.7.0)
     parallel (1.27.0)
-    parser (3.3.10.0)
-      ast (~> 2.4.1)
-      racc
-    prism (1.6.0)
-    racc (1.8.1)
-    rainbow (3.1.1)
-    regexp_parser (2.11.3)
-    rubocop (1.81.7)
-      json (~> 2.3)
-      language_server-protocol (~> 3.17.0.2)
-      lint_roller (~> 1.1.0)
-      parallel (~> 1.10)
-      parser (>= 3.3.0.2)
-      rainbow (>= 2.2.2, < 4.0)
-      regexp_parser (>= 2.9.3, < 3.0)
-      rubocop-ast (>= 1.47.1, < 2.0)
-      ruby-progressbar (~> 1.7)
-      unicode-display_width (>= 2.4.0, < 4.0)
-    rubocop-ast (1.48.0)
-      parser (>= 3.3.7.2)
-      prism (~> 1.4)
-    rubocop-performance (1.25.0)
-      lint_roller (~> 1.1)
-      rubocop (>= 1.75.0, < 2.0)
-      rubocop-ast (>= 1.38.0, < 2.0)
-    ruby-progressbar (1.13.0)
-    standard (1.52.0)
-      language_server-protocol (~> 3.17.0.2)
-      lint_roller (~> 1.0)
-      rubocop (~> 1.81.7)
-      standard-custom (~> 1.0.0)
-      standard-performance (~> 1.8)
-    standard-custom (1.0.2)
-      lint_roller (~> 1.0)
-      rubocop (~> 1.50)
-    standard-performance (1.8.0)
-      lint_roller (~> 1.1)
-      rubocop-performance (~> 1.25.0)
-    unicode-display_width (3.2.0)
-      unicode-emoji (~> 4.1)
-    unicode-emoji (4.1.0)
+    pastel (0.8.0)
+      tty-color (~> 0.5)
+    tty-color (0.6.0)
+    tty-cursor (0.7.1)
+    tty-logger (0.6.0)
+      pastel (~> 0.8)
+    tty-screen (0.8.2)
+    tty-spinner (0.9.3)
+      tty-cursor (~> 0.7)
+    tty-table (0.3.0)
+      equatable (~> 0.5)
+      necromancer (~> 0.3)
+      pastel (~> 0.4)
+      tty-screen (~> 0.2)
+      unicode_utils (~> 1.4.0)
+      verse (~> 0.4)
+    unicode_utils (1.4.0)
+    verse (0.4.0)
+      unicode_utils (~> 1.4.0)
     whenever (1.1.0)
       chronic (>= 0.6.3)
 
 PLATFORMS
-  arm64-darwin-23
+  aarch64-linux
   arm64-darwin-25
+  x86_64-linux
 
 DEPENDENCIES
   fileutils
   logger
   mysql2
-  parallel (~> 1.23)
-  standard (~> 1.32)
+  parallel
+  pastel
+  tty-logger
+  tty-spinner
+  tty-table
   whenever
 
 BUNDLED WITH
-   2.4.21
+  4.0.0

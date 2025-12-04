@@ -23,8 +23,8 @@ ENV.each_key do |key|
   env key.to_sym, ENV[key]
 end
 
-frequency = (ENV['BACKUP_FREQUENCY_MINS'] || 60).to_i
+frequency = (ENV["BACKUP_FREQUENCY_MINS"] || 60).to_i
 
 every frequency.minute do
-  command 'ruby /app/backup_sql_replica.rb'
+  command "ruby /app/backup_sql_replica.rb"
 end

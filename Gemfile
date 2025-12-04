@@ -5,7 +5,10 @@ gem "fileutils"
 gem "logger"
 gem "mysql2"
 gem "whenever"
+gem "parallel"
 
-gem "standard", "~> 1.32"
-
-gem "parallel", "~> 1.23"
+# TTY toolkit for professional CLI output
+gem "tty-logger"
+gem "tty-spinner"
+gem "tty-table"
+gem "pastel"
